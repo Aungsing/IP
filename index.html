@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>IP Address Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header class="top">
+      <div>
+        <h1>IP Address Dashboard</h1>
+        <p class="sub"><span class="dot" id="statusDot"></span><span id="statusText">Connecting…</span></p>
+      </div>
+      <button class="btn btn-primary" id="refreshBtn" type="button">
+        <svg class="icon" id="refreshIcon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.64-6.36M21 4v5h-5" /></svg>
+        Refresh
+      </button>
+    </header>
+
+    <section class="card hero" aria-live="polite">
+      <p class="label">Your IP address</p>
+      <div class="ip" id="ipValue">—</div>
+      <button class="btn btn-ghost" id="copyBtn" type="button" disabled>
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2" /><path d="M5 15V5a2 2 0 0 1 2-2h10" /></svg>
+        <span id="copyLabel">Copy IP</span>
+      </button>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <p class="label">Request time</p>
+        <div class="value" id="timeValue">—</div>
+        <div class="muted" id="timeIso"></div>
+      </article>
+      <article class="card">
+        <p class="label">User-Agent</p>
+        <div class="value ua" id="uaValue">—</div>
+      </article>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2>Recent visitors</h2>
+        <span class="count" id="visitorCount">0</span>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>IP address</th><th>Time</th><th>User-Agent</th></tr>
+          </thead>
+          <tbody id="visitorRows">
+            <tr><td colspan="3" class="empty">Loading visitors…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
